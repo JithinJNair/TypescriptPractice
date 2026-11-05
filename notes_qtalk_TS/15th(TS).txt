@@ -1,0 +1,139 @@
+//type alias:it is a name given to a type . creates the type defination
+//  that can be reused throught the code //   create type alias with the type keyword                         
+
+// let object1 :{
+//     name :string;
+//     age : number
+// }={
+//   name :"john",
+//   age :20
+// }
+
+// let object2 :{
+//     name :string;
+//     age : number
+// }={
+//   name :"john1",
+//   age :21
+// }
+
+//syntax : type  TypeName = type
+// type Age = number;
+// let age:Age = 20;
+// let age2 :Age = 40;
+
+// type Name = string;
+// let username :Name = "John"
+// type USER = {
+//      name : string;
+//      age : number
+// }
+
+// let user1 :USER ={
+//     name: 'John',
+//     age : 23
+// }
+  
+// let user2 : USER ={
+//    name : 'Mark',
+//    age : 28
+// }
+
+// function displayage(age:number){
+//    console.log(age);
+//    }
+// displayage(20)
+
+// type AGE = number;
+// function displayage1(age:AGE){
+//     console.log(age);
+//     }
+// displayage1(22)
+
+// function displayage2(age :AGE){
+//   console.log(age);
+//   }
+// displayage2(28)
+
+//type alias with parameter and return type
+//syntax : type FunctionName = (parameter: type) =>returntype
+
+// type ADD  = (a:number , b :number) => number
+
+// let add:ADD = function (a,b){
+//        return a+b;
+// }
+// console.log(add(30,50));
+
+// let sub1 : ADD  = function(a,b){
+//      return a-b;
+// }
+// console.log(sub1(50,20));
+
+//type alias with union (a value can have more than one possible type)
+// type ID = number | string;
+
+// let id1:ID = 20;
+// let id2:ID = 'Siri'
+
+//object union -- we can create a union between object types
+// type Student = {
+//       name : string,
+//       age : number,
+// }
+// type Teacher ={
+//    name :string,
+//    subject : string
+// }
+// type Person = Student | Teacher
+// let person1 : Person ={
+//    name :'John',
+//    subject: 'js'
+
+//   }
+//   let person2: Person = {
+//     name : 'John1',
+//     subject: 'TS'
+//   }
+
+//type alias with intersection -- it combines multiple types
+
+// type student = {
+//    name :string
+//    age : number
+// }
+// type Employee = {
+// employeeid:number,
+// salary : number   
+// }
+// type studentemployee =  student & Employee
+// let person :studentemployee ={
+//    name :'john',
+//    age : 28,
+//    employeeid :113,
+//    salary : 50000
+// }
+
+// type ID = number | string
+// function getuser(id:ID){
+//       console.log("hello");
+// // }
+// function deleteuser(id:ID){
+//   console.log('bye');
+  // }
+
+//interface -- is also used to define the structure of an object and specifyig the
+// types of properties and methods
+//an interface declaration is another way to name an object type
+// we can create  an interface  using the interface keyword
+//interface is prfered only for non primitives
+//in primitives interface is not possible
+
+interface User {
+  name :string;
+  age : number
+}
+let user :User = {
+   name : 'john',
+   age : 22
+}

@@ -1,0 +1,1098 @@
+
+## 1. First, the big picture
+
+In Java you think roughly:
+
+```text
+Java Source Code
+      ↓
+Compiler
+      ↓
+Bytecode
+      ↓
+JVM
+      ↓
+RAM
+ ┌──────────────┐
+ │ Stack        │
+ │ Heap         │
+ │ Method/Class │
+ │ Area etc.    │
+ └──────────────┘
+```
+
+For TypeScript/JavaScript:
+
+```text
+TypeScript
+    ↓
+TypeScript Compiler
+    ↓
+JavaScript
+    ↓
+JavaScript Engine
+(Node.js uses V8)
+    ↓
+RAM
+```
+
+Conceptually, while JavaScript executes, think:
+
+```text
+JavaScript Engine
+│
+├── Execution Contexts
+│      ├── Global Execution Context
+│      └── Function Execution Contexts
+│
+├── Call Stack
+│
+└── Heap
+       └── Objects, arrays, functions, etc.
+```
+
+For learning, this model is very useful:
+
+> **Execution Context = information needed to execute some code.**
+> **Call Stack = manages which execution context is currently running.**
+> **Heap = memory used for dynamically allocated objects/functions/etc.**
+> **Scope = rules determining where a variable can be accessed.**
+
+---
+
+# 2. Let's start with a simple program
+
+Consider plain JavaScript:
+
+```javascript
+let a = 10;
+const b = 20;
+
+function add(x, y) {
+    let result = x + y;
+    return result;
+}
+
+let total = add(a, b);
+
+console.log(total);
+```
+
+When JavaScript starts executing this file, the engine creates the:
+
+```text
+GLOBAL EXECUTION CONTEXT
+```
+
+Before executing statements, the engine sets up the bindings it needs.
+
+A useful simplified model is:
+
+```text
+Global Execution Context
+
+Memory / Environment
+--------------------------
+a       → uninitialized
+b       → uninitialized
+add     → function
+total   → uninitialized
+```
+
+Then execution starts.
+
+---
+
+# 3. Memory Creation Phase
+
+Before executing the code line by line, declarations are processed.
+
+For:
+
+```javascript
+let a = 10;
+const b = 20;
+
+function add(x, y) {
+    return x + y;
+}
+
+let total = add(a, b);
+```
+
+Conceptually:
+
+```text
+Memory Creation Phase
+──────────────────────────
+
+a       → uninitialized
+b       → uninitialized
+add     → function available
+total   → uninitialized
+```
+
+This explains **hoisting**.
+
+Notice something important:
+
+```javascript
+let a = 10;
+```
+
+contains two ideas:
+
+```text
+Declaration       Initialization
+    ↓                   ↓
+   let a               = 10
+```
+
+During setup:
+
+```text
+a exists
+but
+a is uninitialized
+```
+
+Then when execution reaches:
+
+```javascript
+let a = 10;
+```
+
+it gets initialized with `10`.
+
+---
+
+# 4. Execution Phase
+
+Now JavaScript executes statements in order.
+
+Initially:
+
+```text
+a       → uninitialized
+b       → uninitialized
+add     → function
+total   → uninitialized
+```
+
+Execute:
+
+```javascript
+let a = 10;
+```
+
+Now:
+
+```text
+a → 10
+```
+
+Execute:
+
+```javascript
+const b = 20;
+```
+
+Now:
+
+```text
+b → 20
+```
+
+Eventually:
+
+```javascript
+let total = add(a, b);
+```
+
+JavaScript needs to call a function.
+
+That's where a **new Function Execution Context** comes in.
+
+---
+
+# 5. Function call creates another Execution Context
+
+We call:
+
+```javascript
+add(10, 20);
+```
+
+JavaScript creates a new Function Execution Context for that invocation.
+
+Conceptually:
+
+```text
+Function Execution Context: add()
+
+x       → 10
+y       → 20
+result  → uninitialized
+```
+
+Then:
+
+```javascript
+let result = x + y;
+```
+
+becomes:
+
+```text
+result → 30
+```
+
+Then:
+
+```javascript
+return result;
+```
+
+returns `30`.
+
+The function execution context is finished.
+
+Back in the global context:
+
+```text
+total → 30
+```
+
+---
+
+# 6. Where does the Call Stack come into this?
+
+This is one of the most important concepts.
+
+Execution contexts are managed using the **Call Stack**.
+
+Initially:
+
+```text
+CALL STACK
+
+┌──────────────────────────┐
+│ Global Execution Context │
+└──────────────────────────┘
+```
+
+When:
+
+```javascript
+add(a, b);
+```
+
+is called:
+
+```text
+CALL STACK
+
+┌──────────────────────────┐
+│ add() Execution Context  │ ← currently executing
+├──────────────────────────┤
+│ Global Execution Context │
+└──────────────────────────┘
+```
+
+When `add()` returns:
+
+```text
+CALL STACK
+
+┌──────────────────────────┐
+│ Global Execution Context │
+└──────────────────────────┘
+```
+
+So:
+
+> **Function called → execution context created/pushed.**
+> **Function finishes → execution context popped.**
+
+---
+
+# 7. Nested function calls make this clearer
+
+Consider:
+
+```javascript
+function one() {
+    two();
+}
+
+function two() {
+    three();
+}
+
+function three() {
+    console.log("Hello");
+}
+
+one();
+```
+
+Execution:
+
+```text
+Global
+  ↓
+one()
+  ↓
+two()
+  ↓
+three()
+```
+
+Call stack:
+
+```text
+┌─────────┐
+│ three() │ ← executing
+├─────────┤
+│ two()   │
+├─────────┤
+│ one()   │
+├─────────┤
+│ Global  │
+└─────────┘
+```
+
+`three()` completes:
+
+```text
+┌─────────┐
+│ two()   │
+├─────────┤
+│ one()   │
+├─────────┤
+│ Global  │
+└─────────┘
+```
+
+Then `two()` completes:
+
+```text
+┌─────────┐
+│ one()   │
+├─────────┤
+│ Global  │
+└─────────┘
+```
+
+Then `one()` completes.
+
+That's why it's called a **stack**:
+
+```text
+Last In → First Out
+LIFO
+```
+
+This is quite comparable to Java method calls using stack frames.
+
+---
+
+# 8. Then what is Heap?
+
+Now consider:
+
+```javascript
+let age = 35;
+
+let person = {
+    name: "Jithin",
+    age: 35
+};
+```
+
+For learning purposes, think:
+
+```text
+Execution Environment / bindings
+
+age     → 35
+
+person  → reference ───────────┐
+                              │
+                              ▼
+                         HEAP MEMORY
+                    ┌─────────────────┐
+                    │ Object          │
+                    │ name: "Jithin"  │
+                    │ age: 35         │
+                    └─────────────────┘
+```
+
+This is very similar conceptually to Java:
+
+```java
+Person p = new Person();
+```
+
+where `p` refers to an object allocated on the heap.
+
+But again, with JavaScript don't memorize:
+
+> “all primitives physically live on stack”
+
+as a language rule.
+
+That's an implementation detail engines can optimize.
+
+The useful conceptual distinction is:
+
+```text
+Primitive values
+number
+string
+boolean
+undefined
+null
+bigint
+symbol
+
+vs.
+
+Objects
+arrays
+functions
+etc.
+```
+
+Objects are reference-like values and their underlying storage is generally heap-managed.
+
+---
+
+# 9. What happens with objects?
+
+This is extremely important.
+
+```javascript
+let person1 = {
+    name: "John"
+};
+
+let person2 = person1;
+```
+
+Conceptually:
+
+```text
+person1 ──────┐
+              │
+              ▼
+          HEAP OBJECT
+         ┌─────────────┐
+         │ name:"John" │
+         └─────────────┘
+              ▲
+              │
+person2 ──────┘
+```
+
+Both variables refer to the **same object**.
+
+Therefore:
+
+```javascript
+person2.name = "David";
+
+console.log(person1.name);
+```
+
+prints:
+
+```text
+David
+```
+
+This should feel familiar from Java object references.
+
+---
+
+# 10. Primitive values behave differently
+
+Consider:
+
+```javascript
+let a = 10;
+let b = a;
+
+b = 20;
+
+console.log(a);
+console.log(b);
+```
+
+Output:
+
+```text
+10
+20
+```
+
+Conceptually:
+
+```text
+a → 10
+
+b → copy of 10
+```
+
+Then:
+
+```javascript
+b = 20;
+```
+
+results in:
+
+```text
+a → 10
+b → 20
+```
+
+Changing `b` doesn't change `a`.
+
+---
+
+# 11. Now `var`, `let`, and `const`
+
+This is where **scope + execution context + variable creation** come together.
+
+Consider:
+
+```javascript
+console.log(a);
+
+var a = 10;
+```
+
+During setup:
+
+```text
+a → undefined
+```
+
+Therefore:
+
+```javascript
+console.log(a);
+```
+
+prints:
+
+```text
+undefined
+```
+
+Then:
+
+```javascript
+a = 10;
+```
+
+Now:
+
+```text
+a → 10
+```
+
+---
+
+# 12. `let` works differently
+
+```javascript
+console.log(a);
+
+let a = 10;
+```
+
+During setup, `a` exists but is **uninitialized**.
+
+```text
+a → <uninitialized>
+```
+
+This period is associated with the:
+
+```text
+Temporal Dead Zone
+TDZ
+```
+
+Therefore accessing it before initialization gives:
+
+```text
+ReferenceError
+```
+
+Then execution reaches:
+
+```javascript
+let a = 10;
+```
+
+and now:
+
+```text
+a → 10
+```
+
+---
+
+# 13. `const` is similar regarding TDZ
+
+```javascript
+const a = 10;
+```
+
+During setup:
+
+```text
+a → uninitialized
+```
+
+Then:
+
+```text
+const a = 10;
+```
+
+initializes it.
+
+The big difference is that you cannot later do:
+
+```javascript
+a = 20;
+```
+
+because a `const` binding cannot be reassigned.
+
+---
+
+# 14. Now let's connect Scope
+
+This is where many learners mix concepts.
+
+**Scope and Execution Context are related, but they are NOT the same thing.**
+
+Consider:
+
+```javascript
+let a = 10;
+
+function test() {
+
+    let b = 20;
+
+    if (true) {
+        let c = 30;
+
+        console.log(a);
+        console.log(b);
+        console.log(c);
+    }
+}
+
+test();
+```
+
+Scopes:
+
+```text
+GLOBAL SCOPE
+│
+│ a = 10
+│
+└── FUNCTION SCOPE / lexical environment
+      │
+      │ b = 20
+      │
+      └── BLOCK SCOPE
+            │
+            │ c = 30
+```
+
+Inside the block, JavaScript can look outward:
+
+```text
+c ?
+↓
+Block scope → found
+
+
+b ?
+↓
+Block scope
+↓
+Function scope → found
+
+
+a ?
+↓
+Block scope
+↓
+Function scope
+↓
+Global scope → found
+```
+
+This is **lexical scope lookup**.
+
+Memory trick:
+
+> **Current → Outer → Outer → Global**
+
+Not the other direction.
+
+---
+
+# 15. Scope vs Execution Context
+
+This distinction is worth learning well.
+
+**Scope answers:**
+
+> Where can I access this variable?
+
+**Execution Context answers:**
+
+> What environment/state is needed for this code invocation to execute?
+
+**Call Stack answers:**
+
+> Which function/context is executing now, and where do we return afterward?
+
+**Heap answers:**
+
+> Where are dynamically allocated objects/functions and related data generally stored?
+
+So:
+
+```text
+SCOPE
+"Can I access x from here?"
+
+
+EXECUTION CONTEXT
+"What environment exists while this code is executing?"
+
+
+CALL STACK
+"Which function is currently running?"
+
+
+HEAP
+"Where is this object/data allocated?"
+```
+
+---
+
+# 16. One major difference from Java: no Java-style `static` local/global model
+
+In Java you learned:
+
+```java
+class Employee {
+
+    static int companyCode = 100;
+
+    int employeeId;
+}
+```
+
+You can ask:
+
+```text
+When does companyCode get created?
+
+→ associated with class initialization
+
+When does employeeId exist?
+
+→ when Employee object is created
+```
+
+JavaScript doesn't organize ordinary variables around Java's **static vs instance** model.
+
+For example:
+
+```javascript
+let company = "ABC";
+
+function test() {
+    let employee = "John";
+}
+```
+
+Think instead in terms of:
+
+```text
+Global/module binding
+Function binding
+Block binding
+Object property
+```
+
+rather than:
+
+```text
+static variable
+instance variable
+local variable
+```
+
+JavaScript classes *can* have static and instance fields, but that's a separate class feature—not the basic model for JS variables.
+
+---
+
+# 17. Object properties are created when the object is created/modified
+
+Example:
+
+```javascript
+let employee = {
+    name: "John",
+    age: 30
+};
+```
+
+When that object is created, storage is allocated for the object and its properties.
+
+Conceptually:
+
+```text
+employee
+   │
+   │ reference
+   ▼
+
+HEAP
+┌─────────────────┐
+│ Employee Object │
+│                 │
+│ name → "John"   │
+│ age  → 30       │
+└─────────────────┘
+```
+
+Then:
+
+```javascript
+employee.place = "Bangalore";
+```
+
+adds another property.
+
+```text
+HEAP
+┌─────────────────────┐
+│ Employee Object     │
+│                     │
+│ name  → "John"      │
+│ age   → 30          │
+│ place → "Bangalore" │
+└─────────────────────┘
+```
+
+---
+
+# 18. What happens when a function is called multiple times?
+
+This is important.
+
+```javascript
+function add(a, b) {
+
+    let result = a + b;
+
+    return result;
+}
+
+add(10, 20);
+
+add(50, 60);
+```
+
+These are **two separate function invocations**.
+
+First call:
+
+```text
+add() Execution Context
+
+a      → 10
+b      → 20
+result → 30
+```
+
+Function completes.
+
+Second call gets a fresh invocation environment:
+
+```text
+add() Execution Context
+
+a      → 50
+b      → 60
+result → 110
+```
+
+So local variables aren't shared merely because the same function is being called.
+
+This is similar to Java method calls receiving separate stack frames/local variables.
+
+---
+
+# 19. Then how is memory removed?
+
+JavaScript has **automatic garbage collection**, like Java.
+
+Consider:
+
+```javascript
+let person = {
+    name: "John"
+};
+
+person = null;
+```
+
+Initially:
+
+```text
+person ──────────► Object
+```
+
+After:
+
+```javascript
+person = null;
+```
+
+the previous object may become unreachable:
+
+```text
+person → null
+
+
+          Object
+          ↑
+     no reachable reference
+```
+
+If nothing else can reach that object, the JavaScript engine can eventually reclaim its memory through **garbage collection**.
+
+You don't manually do:
+
+```text
+free(object)
+```
+
+JavaScript manages this automatically.
+
+---
+
+# 20. Java vs JavaScript mental mapping
+
+Since you're coming from Java, this mapping will help:
+
+| Java concept                    | JavaScript concept                                 |
+| ------------------------------- | -------------------------------------------------- |
+| JVM executes bytecode           | JS engine executes JavaScript                      |
+| JVM stack frames                | JS call stack / execution contexts                 |
+| Heap objects                    | Heap-managed JS objects                            |
+| Method invocation creates frame | Function invocation creates execution context      |
+| Local variables                 | Function/block-scoped bindings                     |
+| Object references               | Object reference-like values                       |
+| Garbage Collector               | Garbage Collector                                  |
+| Static/instance/local model     | Global/module/function/block/object-property model |
+| Lexical scope                   | Lexical scope                                      |
+| `new Person()`                  | Object/class instance allocation                   |
+
+But don't memorize that these are **physically identical implementations**. They're conceptual parallels.
+
+---
+
+# 21. The complete picture you should keep in your head
+
+When this runs:
+
+```javascript
+let x = 10;
+
+function calculate(a) {
+
+    let b = 20;
+
+    let employee = {
+        name: "John"
+    };
+
+    return a + b;
+}
+
+let result = calculate(x);
+```
+
+Think:
+
+```text
+                    JAVASCRIPT ENGINE
+                           │
+             ┌─────────────┴──────────────┐
+             │                            │
+        CALL STACK                       HEAP
+             │                            │
+┌──────────────────────────┐              │
+│ calculate() Context      │              │
+│                          │              │
+│ a = 10                   │              │
+│ b = 20                   │              │
+│ employee ────────────────┼──────────┐   │
+├──────────────────────────┤          │   │
+│ Global Context           │          │   │
+│                          │          │   │
+│ x = 10                   │          │   │
+│ calculate = function     │          │   │
+│ result                   │          │   │
+└──────────────────────────┘          │   │
+                                      ▼   │
+                              ┌───────────────┐
+                              │ Object        │
+                              │ name: "John"  │
+                              └───────────────┘
+```
+
+And scope lookup inside `calculate()` conceptually looks like:
+
+```text
+calculate's local scope
+        │
+        │ not found?
+        ▼
+outer/global scope
+        │
+        │ not found?
+        ▼
+ReferenceError
+```
+
+---
+
+## The four questions to ask yourself
+
+Whenever you're confused about a JavaScript variable, ask:
+
+1. **When was this binding created/initialized?** → declaration/hoisting/TDZ.
+2. **Where can I access it?** → scope.
+3. **Which invocation is currently executing?** → execution context + call stack.
+4. **Is this an object/reference-like value, and is it still reachable?** → heap + garbage collection.
+
+If these four concepts become clear, **hoisting, TDZ, closures, callbacks, recursion, async JavaScript, and eventually Playwright execution flow become much easier to understand.**

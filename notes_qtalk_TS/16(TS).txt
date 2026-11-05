@@ -1,0 +1,101 @@
+//interface -- is also used to define the structure of an object and specifyig the
+// types of properties and methods
+//an interface declaration is another way to name an object type
+// we can create  an interface  using the interface keyword
+//interface is prfered only for non primitives
+//in primitives interface is not possible
+
+// interface User {
+//   name :string;
+//   age : number
+// }
+// let user :User = {
+//    name : 'john',
+//    age : 22
+// }
+
+// interface Person{
+//    name : string;
+//    age : number ;
+//    details():string
+// }
+
+// let person:Person ={
+//     name :'john',
+//     age : 30,
+//     details:function():string{
+//        return `my name is ${this.name} and my age is ${this.age}`;
+//     }
+// }
+// console.log(person);
+// console.log(person.details());
+
+
+//interface in functions : interface is used to create the object structure but the
+//  fn can accept that object as a parameter
+
+// interface user{
+//     name : string;
+//     age : number
+// }
+
+// function displayuser(a:user , b:string){
+//        console.log(a.name);
+//        console.log(a.age);
+//        console.log(b);
+       
+// }
+// displayuser({name:"rahul" ,age:23}, "ts")
+
+// interface person {
+//   name : string;
+//   gender : string;
+//   age : number;
+//   details(arg1:string,arg2:string):string;
+// }
+
+// let Person:person={
+//      name :'mark',
+//      gender:'male',
+//      age: 23,
+//      details(firstname : string , lastname:string):string{
+//         return firstname +" " +lastname
+//      }
+// }
+// console.log(name);
+// console.log(Person.age);
+// console.log(Person.gender);
+// console.log(Person.details("manu" , "kumar"))
+
+// interface user{
+//      name : string
+// }
+
+// interface user{
+//    age : number
+// }
+// interface user{
+//    salary : number
+// }
+// let Person :user={
+//    name :'john',
+//    age : 23,
+//    salary : 50000
+// }
+// console.log(Person);
+// console.log(Person.name);
+
+interface Animal{
+  name :string
+}
+interface Bear extends Animal{
+     honey : boolean
+}
+let a :Bear ={
+    name : "elephant",
+    honey : true
+}
+console.log(a);
+
+console.log(a.name);
+console.log(a.honey);

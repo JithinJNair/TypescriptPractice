@@ -1,0 +1,118 @@
+//enums : it is a ts feature that defines a named set of constant values 
+// allowing a variable to take one of the predined set of possible values
+//we  create the enum with enum keyword 
+//it is useful when a value should only represent one of a known set of option
+
+//why do we need enum
+//  direction  -- up, down ,left , right
+// let direction = "up"
+// let direction = "hello"
+// let direction = "aplle"
+
+// enum Direction{
+//        up,
+//        down,
+//        left,
+//        right
+// }
+// enum trafficLight{
+//         red,
+//         yellow,
+//         green
+// }
+//syntax : enum EnumName{
+  //         valie1,
+  //         value2.......
+ //            }
+
+//accessing enum values
+//   enum Direction{
+//        up ,  
+//        down,
+//        left = 6,
+//        right
+// }
+// console.log(Direction.up);
+// console.log(Direction.down);
+// console.log(Direction.left);
+// console.log(Direction.right);
+
+// enum ROLES {
+//    user,
+//    admin,
+//    publisher,
+// }
+// let Usermanagement = ()=>{
+//         if(ROLES.user === 0){
+//             return 'user dashboard'
+//         }
+//         else{
+//             return 'its not the user dashboard'
+//         }
+// }
+// let result = Usermanagement()
+// console.log(result);
+
+//string enum
+// enum ROLES {
+//    user ,
+//    admin= "Admin" ,
+//    publisher = 'Publisher',
+// }
+
+// let Usermanagement = ()=>{
+//         if(ROLES.admin === "Admin"){
+//             return 'admin dashboard'
+//         }
+//         else{
+//             return 'its not the admin dashboard'
+//         }
+// }
+// let result = Usermanagement()
+// console.log(result);
+
+//const enum
+//  const enum color {
+//          red,
+//          green,
+//          yellow
+// }
+// console.log(color.red);
+
+//mixed enum
+// enum weekend{
+//    friday = "Friday",
+//    saturday = 100,
+//    sunday   = saturday* 100,
+// }
+// console.log(weekend.friday);
+// console.log(weekend.saturday);
+// console.log(weekend.sunday);
+// //reverse mapping // CAN be done only for the numbered enum
+// console.log(weekend[10000]);
+// console.log(weekend['saturday']);
+// console.log(weekend['Friday']);   // error
+
+//oops ---- object oriented programming based on classes and object rather than functions  and logic
+//easier debugging   // reuse the code // effective problem solving
+
+//core principles of oops
+// encapsulation // abstraction // inheritence // polymorphism
+
+//class
+//create students
+// let studnet1 = {
+//    name : 'rahul',
+//    age : 20
+// }
+// let studnet2 = {
+//    name : 'rahul1',
+//    age : 21
+// }
+//class  - a class gives the blueprint/template  to create an object
+class Student {
+  name : string = "";
+  age :number = 0
+}
+let s1 = new Student()
+let  s2 = new Student()

@@ -1,0 +1,2540 @@
+
+//ts
+//ts is a strongly typed programming language and it is a superset of js
+// built on top of the existing syntax and functions of the js
+//it is also a statically typed language
+// ts code can not be written inside the js file
+//  (beacuse js will not be having the additinal feature which ts has)
+//js code can be written inside the ts file
+// ts is not for the browser it is only for the development
+  //tsc - type script compiler
+
+//   let a :number  = 10
+  //values
+  //primitive and non primitive
+  //primitive - number , bigint , string , boolean , undefined , null 
+  //non -primitive - object , function , array, tuple and class
+  //special types - any ,unknown , void , never
+  //custon types - type alias , interface , union type , enum 
+
+  //primitive
+  //number
+//   let b : number = "string"
+//   console.log(b);
+
+//bigint - reprents the very large integer
+// let a : bigint =  20.08n
+// console.log(a);
+
+//string -- " ", '', ``
+// let z : string =  100
+// console.log(z);
+
+//boolean
+// let b:boolean =  "false"
+// console.log(b);
+
+//null - null
+// we intentionally give no value
+//usually givven by the developers
+// let b :null ;
+// console.log(b);
+
+//undefined  
+// we will not be assigned any valued
+//usually is taken automatically 
+// let a : undefined ;
+// console.log(a);
+
+//special types -- any , unkown , never and void
+//any -- whenevr we dont dont know what type of value it is then will use any
+//any allows a variable to store any type of value without chceking
+// let b : any = 20;
+// console.log(b.toUpperCase());
+
+// let  a:any = 20
+// console.log(a);
+
+// let x;
+// console.log(x);
+
+// unknown -- means it will accept any type of values but before perform any action 
+// there should a type checking
+
+// let a : unknown = 20
+//     a = "typescript"
+// console.log(a);
+
+// let b :unknown = "apple"
+// if(typeof b === "string"){
+//     console.log(b.toUpperCase());
+    
+// }
+
+//void -- the function can finish normally , but it does not return a  value
+
+// function greet():void{
+//     console.log("hello");
+//     return ;
+       
+// }
+// greet()
+
+//never -- the function cannot complete normally
+// it cannot reach the end of the function
+//never --- always throws an error / it runs the function forever
+
+// function fail():never{
+//     throw new Error("something went wrong")
+// }
+
+// fail()
+
+// function fail1():never{
+//      console.log("hello");
+     
+// }
+// fail1()
+
+
+
+
+  //custom types
+  //union type -- it allows a variable to be one of the multiple types
+
+// let a : boolean | string =  false
+// console.log(a);
+
+// let b : number | string | boolean =  20 
+// console.log(b);
+
+// let c : number | undefined ;
+// console.log(c);
+
+// let d : null | number = null;
+// console.log(d);
+   
+
+// type inference
+// let b = 20;
+// console.log(b);
+
+//keywords  -- keywords are the reserved words in a programming lanuague 
+// each keyword is predefined and has its own meaning
+// keywords are always defined in the lower case
+
+//var
+    // var a : number = 10; 
+    // var b : string = "apple"
+    // var c : boolean = true
+
+    //  var a:number;
+    //     a = 10;
+    //     console.log(a);
+        
+    // var b :number = 20;
+    // console.log(b);
+    
+    // var b :number = 30;
+    //     b = 40
+    //     console.log(b);
+
+        
+// let a : number = 10
+// let b : string = "apple"
+// let c: boolean = true
+// let d : null = null
+
+  //   let a:number;
+  //       a = 10
+  //  let b :number = 10;
+  //       b = 30
+
+// const a: number = 10;
+// const b : string = "typescript"
+
+  //  const a:number;
+  //        a=10
+
+    // const b : number = 109
+    // console.log(b);
+         
+//identifiers : these are the names given by the programmer like a variable name
+// function name / method name / class name
+//used are used to idemtify the parts of the program like variable ,function ,method
+//rules of identifiers
+// it should start with a alphabet or _ or $
+// it cannot start with the digit
+//it can be a combination of letters , digits , _ and $
+//no space is allowed in an identifer 
+// no special charcters are allowd in the identifier except underscore and $
+// keywords cannot be used as an identifier
+
+
+//operators
+// console.log(3+2);
+// console.log((3*2));
+
+// let a:number = 3;
+// let b : number = 2;
+// console.log(a+b);
+// console.log(a-b);
+
+// let p : number = a + b;
+//operands - can be either valies or variables
+//operators - are the symbols used to perform operation on operands
+//expression - it is a combination of operator and operands
+
+//operators are classified into unary , binary operator, ternary operator
+// an operator which performs operation on single operand is called as unary operator;
+//an operator which performs operation on two operands is called as the binary operator;
+// an operator which performs operation on three operands is known as ternary operator
+
+//unary  : ++ increment operator , -- decrement operator
+// !logical NOT  , typeof()
+
+// binary operator --  arithmetic operator , assignment operator ,relational operator 
+// logical operator
+
+//ternary
+
+//binary operator
+// arithmetic operator : +(addition) , -(sub) , *(mul), /(div) , %(modulus) , **(exponentiation)
+// let q:number = 20;
+// let r: number = 10;
+
+// let s : number = q / r
+// console.log(s);
+
+// let s : number = q % r
+// console.log(s);
+
+// let s : number = 2 ** 3
+// console.log(s);
+
+
+
+
+
+// let y : number =  q * r;
+// console.log(y);
+// console.log(q*r);
+
+// let s: number = q + r
+// console.log(s);
+// console.log(q+r);
+
+// let z : number = q - r;
+// console.log(z);
+// console.log(q-r);
+//-------------------------------------------------------------------------------------
+//assignment operator 
+// let a: number = 10;
+// a += 5
+// console.log(a);
+
+// a -= 5
+// console.log(a);
+
+// a *= 5
+// console.log(a);
+
+// a /= 2
+// console.log(a);
+
+//  a %= 5
+//  console.log(a);
+
+//  a **= 2
+//  console.log(a);
+ 
+//relational operator
+// let age : number = 25
+// console.log( age > 18);
+// console.log(age < 18);
+// console.log(age >= 25);
+// console.log(age <= 18);
+
+// let a = 10;
+// let b = "20"
+// console.log(a !== b);
+
+//logical operator
+// used to combine multiple condition or to check the condition
+
+// let a :number =10;
+// let b : number =20;
+//logical AND(&&)
+  // let result =  a>10   &&   b>10   
+  // console.log(result);
+
+  //logical OR(||) any one condition must be true
+  // let result =  a>10   ||  b>10   
+  // console.log(result);
+
+  //logical NOT (!): TO REVERSE A BOOLEAN VALUE
+  // let a : number = 10;
+  // let res = (!(a>5)) 
+  // console.log(res);
+          
+  //nullish coalesing(??) -- used when we  want to provide a default value if something
+  //  is null / undefined
+
+  // let username : string | null = null ;
+  // let name1 = username ?? "GUEST"
+  // console.log(name1);
+  
+  //ternary operator -- it is  short way to write if and else
+  //syntax --  condition ? expr1 : expr2
+  // let age =18;
+  // let result =  age>=19 ? "adult" : "Minor";
+  // console.log(result);
+  
+//unary operator
+//increment (++)
+// let a : number = 10;
+// //  a = a+1;
+//  a++
+//  console.log(a);
+ //pre increment // first increase aand then use
+//  let a : number = 5
+//  let b : number = ++a
+//  console.log(a);
+//  console.log(b);
+
+ // post increment// first use and then increase
+//  let a : number = 5;
+//  let b : number = a++
+//  console.log(a);
+//  console.log(b);
+
+//decrement
+// let  c : number = 5;
+//   c--;
+//  console.log(c);
+
+//pre decrement  -- first decrease and then use
+// let a : number = 5
+// let b : number = --a
+// console.log(a);
+// console.log(b);
+
+//post decrement -- first use the value and then decrease 
+// let a : number = 5
+// let b : number = a--
+// console.log(a);
+// console.log(b);
+
+//concatination
+// console.log(10 + 20);
+// console.log("hello" +" "+ "typescript");
+
+// let s1:string = "hello"
+// let s2 = "typescript";
+// console.log(s1 +" "+s2);
+
+// console.log("age is" +" "+ 20);
+
+// let name3 : string = "tom";
+// let age : number = 20;
+// console.log("my name is" + " "+name3);
+// console.log("my age is" + " "+ age);
+
+//conditional statements
+
+// let a = 20;
+// let b = 10;
+// let c : number;
+// let d : number;
+// {
+//   c = a + b;
+//   console.log(c);
+// }
+
+// {
+//   d = a-b;
+//   console.log(d);
+// }
+  
+ //conditional statements 
+ //if statement -- it runs only when the condition is true
+//  let a : number = 5;
+//  if(a>7){
+//   console.log("a is above 7");
+//    }
+
+// if-else-statement
+// let a : number = 3;
+// if(a > 7){
+//   console.log(" a is above 7");
+  
+// }
+// else{
+//     console.log(" a is below 7");
+    
+// }
+
+//suyntax
+// if(condition){
+//   //statement
+// }
+// else{
+//   //statememt
+// }
+
+//if-else-if
+// let a : number = 5;
+// if( a > 7){
+//    console.log("a is above 7");
+   
+// }
+// else if( a < 7){
+//   console.log(" a is below 7");
+  
+// }
+// else{
+//    console.log("a is equal to 7");
+   
+// }
+//syntax
+// if(condition1){
+//   //statement
+
+// }
+// else if{
+//   //stattement
+// }
+// else{
+//   //statemnett
+// }
+
+//nested statemts
+//syntax
+// if(condition1){
+//   // statement
+//     if(condtion2){
+//       //statement
+//     }
+//     else{
+//       //statement
+//     }
+// } 
+// else{
+//   //statement
+//    if(condtion2){
+//       //statement
+//     }
+//     else{
+//       //statement
+//     }
+// }
+
+// let a : number = 4;
+// let b : number = 5;
+// if(a>7){
+//   console.log('a is greater than 7');
+//   if(b>10){
+//      console.log('b is greater than 10');
+     
+//   }
+//   else{
+//      console.log('b is not greater than 10');
+     
+//   }
+//   }
+//   else{
+//      console.log('a is not gretaer than 7');
+     
+//   }
+
+
+// let a = 5;
+// let b =  10;
+// let c = 20;
+// if(a > 7){
+//    console.log('a is greater than 7');
+//    if(b > 10){
+//      console.log('b is greater than 10');
+//      }
+//    else{
+//      console.log('b is not gretaer than 10');
+//      }
+//    }
+// else{
+//   console.log('a is not gretaer than');
+//   if( c > 25){
+//     console.log('c is greater than 25');
+//     }
+//   else{
+//     console.log('c is not gretaer than 25');
+//   }
+//   }
+
+//switch statemnt
+// let signal : string = "blue";
+// if(signal == "green"){
+//   console.log("move");
+  
+// }
+
+// else if(signal == "red"){
+//   console.log("stop");
+  
+// }
+// else if ( signal == "orange"){
+//   console.log("slow down");
+  
+// }
+// else{
+//   console.log('invalid signal');
+  
+// }
+ 
+ 
+ //switch 
+//  let signal :string = "purple";
+//   switch(signal) {
+//      case "green"  : console.log("move");
+//                       break;
+//       case "red"    : console.log("stop");
+//                        break;
+//       case "orange"  : console.log("slow down");
+//                         break;
+//       default        : console.log('ivalid signal');
+      
+//       }
+ 
+ //looping statements
+// console.log("hi");
+// console.log("hi");
+// console.log("hi");
+// console.log("hi");
+// console.log("hi");
+
+// while , do while loop , for loop , for-in , for-of 
+//while --  it keeps executing the code until the condition becomes false
+
+//syntax 
+// intialization;
+// while(condition){
+       //statemnets
+       //updation
+//}
+
+// let i : number = 1;
+// while(i<=5){
+//    console.log("hi");
+//    i++;
+   
+// }
+
+// to print 5 to 1
+// let i = 5;
+// while(i>=1){
+//   console.log(i);                 //5 , 4 , 3 , 2 ,1
+//    i--; 
+  
+// }
+  
+//dowhile
+
+//syntax  
+// intialization;
+// do {
+//statement
+//updation
+//  }while(condition)
+
+// let i : number = 1
+// do{
+//    console.log(i);         //1 , 2 ,3 ,4,5
+//    i++;
+   
+// }while(i<=5)
+
+//  while vs dowhile
+// while -- it  checks the condition first then begins the loop, if the condition is true
+//if the condition fails it will not begin the loop 
+// while -- no exceution if the condition fails
+
+
+//do-while -- first it begins the loop and then checks the condition , if it is true , 
+// it repeats the loop body else if the condition fails it stops the loop
+//do -while -- it runs the code first and then checks so it always runs at least once
+
+//for loop
+//syntax --
+  //  for (initialization ; condition ; updation){
+  //    // statemnets
+        
+  //  }
+
+  // for( let i = 1; i <=5; i++){
+  //   console.log(i);                 //1 , 2 ,3 , 4 , 5
+    
+  // }
+
+  //nested for -loop
+   //syntax
+    // for(intialization ; condition ; updation){
+    //    statement;
+    //     for(initialization ; condition ; updation){
+    //        statement;
+    //     }
+    // }
+ 
+    //  for( let i = 1 ; i <=3 ; i++){
+    //   console.log(i);                    //i //1 2  3
+    //       for(let j =1 ; j<=3 ; j++){
+    //         console.log(j);             //j //1 2 3      1 2 3    1 2 3
+    //       }
+    //   }
+
+    //nested while loop
+    // syntax 
+        // initialization
+        //   while(condition){
+        //     statement;
+
+        //        initialization;
+        //        while(condition){
+        //         statement;
+        //         updation;
+        //        }
+        //        updation;
+        //   }
+
+//let i = 1 ;
+// while( i <= 3){
+//      console.log(i);       //1 2 3
+
+//      let j = 1;
+//      while(j <=3){
+//          console.log(j);       //1 2 3   1 2 3     123
+//          j++; 
+         
+//      }
+
+//      i++; 
+// }
+
+
+//break -- it will stop the loop and it will nor perform any other itertaions
+// cintinue -- it stops the current iteration and it will continue the next iterations
+// for(let i =1 ; i<=5 ; i++){
+//   if(i == 3){
+//     continue;
+//   } 
+//     console.log(i);    //1  2  4 5
+    
+// }
+
+// functions
+
+    
+// function add(x:number , y:number){
+//        let z : number = x+y
+//        console.log(z);
+//        return z;
+//   }
+// add(10 , 20)
+// add(30 , 40)
+// add(40 , 50)
+
+//syntax 
+//  function FunctionName(Paramenter1:parameter1ReturnType , Paramenter2:parameter2ReturnType )
+//             :returntype{
+//       //  code to perform the operation
+//       //return value
+//  }
+//  FunctionName()
+
+//function invocation
+      // function display( ){
+      //   console.log("My name is TOM");
+             
+      // }
+      // display()
+
+// a function  is a block of code that performs a specific task/ operation which can be reused 
+// when ever is need and it will executed only when it is called or invoked
+  
+//function declaration
+    //function keyword , function name , parameter  and return type
+    // inside the fn body will be writing the code to perform the operation
+
+
+ // function pararmeter
+//  function display(x:string){
+//        console.log(`my name is ${x}`);
+       
+//  } 
+//  display("John")  
+
+// function multiply(a:number , b:number){
+//     let c : number = a *b;
+//     return c;
+// // }
+// let result = multiply(10 , 2)
+// console.log(result);
+
+//optional paramter(?)
+
+// function hello(a?:string){
+//    console.log(a);
+   // }
+// hello()
+
+// function numbers(a:number , b?: number , c?:number ){
+//    console.log(a);
+//    console.log(b);
+//    console.log(c);
+//    }
+//    numbers(10, 20 , 30)
+//    numbers(10)
+
+//default parameter
+// function EnterCountry(city:string = "INDIA"){
+//   console.log(city);
+// }
+// EnterCountry("England")
+// EnterCountry("GERMANY")
+
+//optional and default
+// function placeOrder(product: string , quantity:number = 1, coupan?:boolean  ){
+//     if(coupan === true){
+//         console.log(`ordered ${quantity} ${product} :coupan Applied`);
+//         }
+//         else{
+//            console.log(`ordered ${quantity} ${product} :NO coupan Applied`);
+//         }
+// }
+// // placeOrder("laptop")
+// // placeOrder('HEADPhones' ,undefined , 5)
+// placeOrder("Harddisk"  ,undefined , true);
+
+  //function execution memory
+//  function f1() {
+//        console.log("inside f1");           
+//          f2()
+         
+//  }
+//  function f2(){
+//     console.log("inside f2");           
+    
+//  }
+//  f1()
+
+//function return statement
+//  function multiply(a:number , b:number): number{
+//    let c:number = a*b;
+//    return c;
+//  }
+//  let x:number = multiply(2 , 3)
+//  console.log(x); //6
+
+//  console.log(multiply(2,5));
+
+// //function calling another function
+// function square(n:number):number{
+//      let x:number = n*n;
+//      return x;
+// }
+// //pirsquare
+// function areaOfCircle(radius:number):number{
+//        const pi : number = 3.144;
+//        let a: number = pi * square(radius)
+//        return a;
+// }
+// let result:number = areaOfCircle(10)
+// console.log(result);
+
+
+//function types
+//function expression -- any function which is assigned to a variable 
+// and called by its variable name
+
+// let c = function f1 (){
+//   console.log("hello");
+  
+// }
+// c()
+
+//anonymus function -- a fn which does not have any name
+// let b = function(){
+//   console.log("hello welcome to ts");
+  
+// }
+// b()
+// let b = function (a:number , b : number){
+//        let x : number = a+b;
+//        return x;
+// }
+// let z:number = b(20, 30)
+// console.log(z);
+
+//iffe() - immediately invoking function expression
+//(entire fn will be written)()
+// (function f1(){
+//   console.log("hello");
+  
+// })()
+
+
+// let z = (function(a:number , b:number){
+//     console.log('hello');
+//     let y :number = a+b;
+//     return y;
+    
+// })(20,20)
+// console.log(z);
+
+//arrow functions(=>) --  to reduce the  syntax of the normal function
+//syntax  -- () => {}
+     
+    // let z =  () => {
+    //     console.log("hello");
+    //    }
+    //   z()
+
+    // let result = (x:string) => {
+    //     console.log(x);
+    //   }
+    // result("typescript")
+       
+// const multiply = (a:number , b : number):number =>{
+//          return  a*b;
+// }
+// let p = multiply(10 , 20)
+// console.log(p);
+
+// let multiply2 = (a : number , b:number):number => a * b
+// let z = multiply2(20 , 30)
+// console.log(z);
+
+//scope of the variables
+//global scope
+// var a : number = 10;
+// let b : number = 20;
+// const c : number = 30;
+// console.log('global');
+
+// console.log(`var a is ${a}`);
+// console.log(`let b is ${b}`);
+// console.log(`const c is ${c}`);
+// console.log('-------------------------------------------------------------');
+// console.log('block');
+
+// {
+// console.log(`var a is ${a}`);
+// console.log(`let b is ${b}`);
+// console.log(`const c is ${c}`);
+// }
+// console.log('-------------------------------------------------------------');
+// console.log('function block');
+// function f1(){
+// console.log(`var a is ${a}`);
+// console.log(`let b is ${b}`);
+// console.log(`const c is ${c}`);
+// }
+// f1()
+ 
+ //-------------------------------------------------------------------------------------
+ //block scope
+//  {
+//      var a : number = 10;
+//      let b : number = 20;
+//      const c : number = 30;
+//     //   console.log(a); 
+//     //  console.log(b);
+//     //  console.log(c);
+//  }
+//  function f1(){
+//       console.log(a); 
+//     //  console.log(b);
+//     //  console.log(c);
+   
+//  }
+//  f1()
+
+// function scope 
+// function f1(){
+//    var a: number = 10;
+//    let b : number = 20;
+//    const c : number = 30
+//    console.log(a);
+//    console.log(b);
+  
+//    console.log(c);   
+
+// }
+// f1();
+
+
+// callbackfunction
+//a fn which is passed as an argument to another function that is callback fn
+
+// function sayHello(){
+//        console.log('hello'); 
+       
+// }
+// function welcome (callback:()=>void){
+//    callback()
+// }
+// welcome(sayHello)
+
+ 
+// function orderFood(m:(a:string)=>void){
+    
+//     console.log('food ordered...');
+//     console.log('pizza');
+//     m('mark')
+//   }
+// function foodDelivered(a:string){
+//   console.log(`my name is ${a}`);
+//   }
+// orderFood(foodDelivered)
+
+//hof it is a function that takes another function as an argument
+//a function which returns another function
+
+// function outer():()=>void{
+
+//    function inner():void {
+//     console.log('hello from inner function');
+    
+//    }
+//    return inner;
+// }
+// let r = outer()
+// r()
+
+// function outer2 ():(a:string)=> string{
+//     return function (a:string):string{
+//      console.log('hello');
+//      return a
+     
+//     }
+//   }
+//   let res = outer2()
+//   console.log(res('hello'))
+
+//rest parameters in function
+// a rest  parameter allows a function to accept any number pf argumnets
+//... ( collect all the values an store)
+
+// function add (...numbers :number[]) : number {
+//    let sum = 0;
+//    for (let num of numbers){
+//        sum = sum + num;
+//    }
+//    return  sum;
+// }
+// console.log(add(10,20));
+// console.log(add(10,20,30,40));
+
+//arrays 
+// let a : number = 10;
+// let b : number = 30;
+// let c : number = 40;
+// let d :number = 50;
+// let e :number = 60
+//array -- it is a gropup of values /data and each values in an array is called as an element
+//syntax --  arrayname :type = [value1 , value2]
+// let numbers: number[] = [1,3 ,4,5 ]
+// console.log(numbers);
+
+// let strings : string[]  = ['A' , 'B' , 'C' , 'D']
+// console.log(strings);
+
+// let  c :(string | number | boolean)[] = ['a',12,true]
+// console.log(c);
+
+//acces array elemts
+//arrayname[index]
+//arrayname[length -1]
+
+// let a : number[] = [10,20,30,40]
+// console.log(a[3]);
+// console.log(a[0]);
+// console.log(a[1]);
+// console.log(a[2]);
+
+//print elelmt of an array using loop
+// let a:number[] = [1,2,3 ,4,5,6,7,8]
+// for(let i =7; i>=0 ; i--){
+
+//   console.log(i+ "=" + a[i]);
+//   }
+
+//array declaration
+// let scores : number[] = [85 , 90 , 79, 95]
+// let strings : Array<string> = ['a' , 'b' , 'c','d' ]
+
+//updating an array
+// let a : number [] = [10,20,30,40,50]
+// console.log(a);
+// a[3] = 60;
+// console.log(a);
+
+//readonly arrays
+// let numbers :readonly number[] = [1,2,3,4,5,6]
+//   console.log(numbers);
+
+// multidimensional array --- an array which is inside another array 
+// let numbers : number[][] = [
+//       [10, 20, 30 , 40],
+//       [50, 60, 70 , 80]
+// ]
+// console.log(numbers[0][0]); //10
+// console.log(numbers[0][1]); //20
+// console.log(numbers[0][2]);
+// console.log(numbers[0][3]);
+// console.log(numbers[1][0]);
+// console.log(numbers[1][1]);
+// console.log(numbers[1][2]);
+// console.log(numbers[1][3]);
+
+// tuple --  tuple  can conatin two values of different data-types 
+// and it will be having a fixed length where each position has a specific type
+
+// let arr:(string | number)[] = [22 ,"mark" , 23,'a']  //array
+
+// let arr1:[string , number , [string]]= ['mark' , 23, ['mark1'] ]
+// console.log(arr1);
+  
+  // let skills :readonly [number , string] = [10 , "typescript"]
+  // console.log(skills);
+  
+  // skills[0] = 1000
+  // console.log(skills);
+  // skills[1] = 'js'
+  // console.log(skills);
+
+  //objects -- object is a real world entity which will be stored 
+  // in the form of key and value pair
+  
+  // let student = {
+  //      name : "John",
+  //      age?: 23,
+  //      course : "ts"
+  // }
+  // console.log(student.name);
+  // console.log(student.age);
+  // console.log(student.course);
+  // console.log(student);
+  
+  //modify
+  //  student.age = 30
+  //  console.log(student);
+  //  student.course = 'playwright'
+  //  console.log(student);
+  
+  //adding new property
+  // student.city = "Bengaluru"
+   
+  //deleting  a proprty in object
+  // delete student.age
+  // console.log(student);
+  
+  // let student2 :{
+  //      name : string;
+  //      age?: number
+  // } = {
+  //          name :'mark',
+  //          age:   23
+  //   }
+  // console.log(student2);
+  // delete student2.age
+  // console.log(student2);
+  
+  // array as an object value
+  // let  student = {
+  //        name : "rahul",
+  //        age:21,
+  //        marks : [80, 90,79,85]
+  // }
+  // console.log(student);
+  // console.log(student.marks);
+  // console.log(student.marks[2]);
+  
+  //object as value
+  // let student = {
+  //     name : 'rahul',
+  //     age :21,
+  //     address :{
+  //            city :"Banglore",
+  //            state : "Karnataka"
+  //     }
+  // }
+  // console.log(student.address.state);
+  // console.log(student.address.city);
+  
+  //nested object -- an object inside another object
+//  let company ={
+//      name : 'QSpiders',
+//      employee :{
+//                name : 'John',
+//                age: 24
+//      }
+//  }  
+//  console.log(company);
+//  console.log(company.name);
+//  console.log(company.employee.name);
+//  console.log(company.employee.age);
+ 
+ //object methods
+ //object.keys()  to get all the property names
+//  let  student ={
+//    name : "rahul",
+//    age : 22
+//  }
+//  console.log(Object.keys(student));
+ //object.values()  to get all the property values
+//  console.log(Object.values(student));
+ //object.entries()  to get properties as a key-value pair
+//  console.log(Object.entries(student));
+ //object.assign()  -- copies properties from one object to another object
+// let student = {
+//    name : 'mark'
+// }
+// let details = {
+//      name : 'rahul'
+// }
+// Object.assign( details,student)
+// console.log(details);
+
+//object.freeze()  -- to freeze the object complety will be using this freeze 
+//cannot modify the existing properties
+//cannot add the new property // cannot delete the properties
+// let student :{
+//    name? : string,
+//    age : number
+// }= {
+//    name : 'mark',
+//    age : 22
+// }
+// Object.freeze(student)
+// console.log(Object.isFrozen(student));
+// student.age = 25
+// console.log(student);
+// delete student.name
+// console.log(student);
+
+//object.seal()  -- seals the object
+// we can only modify the object
+//cannot add the new properties
+//cannot delete the properties
+ 
+//  let student :{
+//    name? : string,
+//    age : number
+// }= {
+//    name : 'mark',
+//    age : 22
+// }
+// console.log(student);
+// Object.seal(student)
+// console.log(Object.isSealed(student));
+
+
+// student.age = 25;
+// console.log(student);
+// delete student.name 
+// console.log(student);
+
+//destructing destructing means taking the values from 
+// an object and directly storing into a variables
+
+//without destructuring
+// let student ={
+//    name :"neeraj",
+//    age : 23
+// } 
+// console.log(student.name);
+// console.log(student.age);
+
+//with  destructuring
+// let student1 ={
+//      name : "lakshmi",
+//      age : 23
+// }
+// let {name :a , age :b} = student1
+// console.log(a);
+// console.log(b);
+
+//spread and rest
+//spread operator(...) -- it is used to copy or combine the object properties
+//copy
+// let  student ={
+//    name :"shreya",
+//    age : 23
+// }
+// let student2={
+//     ...student
+//      }
+// console.log(student);
+// console.log(student2);
+     
+//combine
+// let student ={
+//      name :'siri',
+//      age : 23
+// }
+// let course = {
+//    subject : "typescript"
+// }
+// let details ={
+//      ...student,
+//      ...course
+// }
+// console.log(details);
+
+// let student = {
+//    name : 'keerthan',
+//    age : 23
+
+// }
+// let update ={
+//    ...student,
+//    age : 24
+// }
+// console.log(update);
+
+//rest (...) -- it collect the remaning values
+
+// let student ={
+//    name : 'keerthann',
+//    age : 23,
+//    course : "ts"
+// }
+// let { name: a , ...b} = student
+// console.log(a);
+// console.log(b);  
+
+
+//type alias:it is a name given to a type . creates the type defination
+//  that can be reused throught the code //   create type alias with the type keyword                         
+
+// let object1 :{
+//     name :string;
+//     age : number
+// }={
+//   name :"john",
+//   age :20
+// }
+
+// let object2 :{
+//     name :string;
+//     age : number
+// }={
+//   name :"john1",
+//   age :21
+// }
+
+//syntax : type  TypeName = type
+// type Age = number;
+// let age:Age = 20;
+// let age2 :Age = 40;
+
+// type Name = string;
+// let username :Name = "John"
+// type USER = {
+//      name : string;
+//      age : number
+// }
+
+// let user1 :USER ={
+//     name: 'John',
+//     age : 23
+// }
+  
+// let user2 : USER ={
+//    name : 'Mark',
+//    age : 28
+// }
+
+// function displayage(age:number){
+//    console.log(age);
+//    }
+// displayage(20)
+
+// type AGE = number;
+// function displayage1(age:AGE){
+//     console.log(age);
+//     }
+// displayage1(22)
+
+// function displayage2(age :AGE){
+//   console.log(age);
+//   }
+// displayage2(28)
+
+//type alias with parameter and return type
+//syntax : type FunctionName = (parameter: type) =>returntype
+
+// type ADD  = (a:number , b :number) => number
+
+// let add:ADD = function (a,b){
+//        return a+b;
+// }
+// console.log(add(30,50));
+
+// let sub1 : ADD  = function(a,b){
+//      return a-b;
+// }
+// console.log(sub1(50,20));
+
+//type alias with union (a value can have more than one possible type)
+// type ID = number | string;
+
+// let id1:ID = 20;
+// let id2:ID = 'Siri'
+
+//object union -- we can create a union between object types
+// type Student = {
+//       name : string,
+//       age : number,
+// }
+// type Teacher ={
+//    name :string,
+//    subject : string
+// }
+// type Person = Student | Teacher
+// let person1 : Person ={
+//    name :'John',
+//    subject: 'js'
+
+//   }
+//   let person2: Person = {
+//     name : 'John1',
+//     subject: 'TS'
+//   }
+
+//type alias with intersection -- it combines multiple types
+
+// type student = {
+//    name :string
+//    age : number
+// }
+// type Employee = {
+// employeeid:number,
+// salary : number   
+// }
+// type studentemployee =  student & Employee
+// let person :studentemployee ={
+//    name :'john',
+//    age : 28,
+//    employeeid :113,
+//    salary : 50000
+// }
+
+// type ID = number | string
+// function getuser(id:ID){
+//       console.log("hello");
+// // }
+// function deleteuser(id:ID){
+//   console.log('bye');
+  // }
+
+//interface -- is also used to define the structure of an object and specifyig the
+// types of properties and methods
+//an interface declaration is another way to name an object type
+// we can create  an interface  using the interface keyword
+//interface is prfered only for non primitives
+//in primitives interface is not possible
+
+// interface User {
+//   name :string;
+//   age : number
+// }
+// let user :User = {
+//    name : 'john',
+//    age : 22
+// }
+
+// interface Person{
+//    name : string;
+//    age : number ;
+//    details():string
+// }
+
+// let person:Person ={
+//     name :'john',
+//     age : 30,
+//     details:function():string{
+//        return `my name is ${this.name} and my age is ${this.age}`;
+//     }
+// }
+// console.log(person);
+// console.log(person.details());
+
+
+//interface in functions : interface is used to create the object structure but the
+//  fn can accept that object as a parameter
+
+// interface user{
+//     name : string;
+//     age : number
+// }
+
+// function displayuser(a:user , b:string){
+//        console.log(a.name);
+//        console.log(a.age);
+//        console.log(b);
+       
+// }
+// displayuser({name:"rahul" ,age:23}, "ts")
+
+// interface person {
+//   name : string;
+//   gender : string;
+//   age : number;
+//   details(arg1:string,arg2:string):string;
+// }
+
+// let Person:person={
+//      name :'mark',
+//      gender:'male',
+//      age: 23,
+//      details(firstname : string , lastname:string):string{
+//         return firstname +" " +lastname
+//      }
+// }
+// console.log(name);
+// console.log(Person.age);
+// console.log(Person.gender);
+// console.log(Person.details("manu" , "kumar"))
+
+// interface user{
+//      name : string
+// }
+
+// interface user{
+//    age : number
+// }
+// interface user{
+//    salary : number
+// }
+// let Person :user={
+//    name :'john',
+//    age : 23,
+//    salary : 50000
+// }
+// console.log(Person);
+// console.log(Person.name);
+
+// interface Animal{
+//   name :string
+// }
+// interface Bear extends Animal{
+//      honey : boolean
+// }
+// let a :Bear ={
+//     name : "elephant",
+//     honey : true
+// }
+// console.log(a);
+
+// console.log(a.name);
+// console.log(a.honey);
+
+
+//enums : it is a ts feature that defines a named set of constant values 
+// allowing a variable to take one of the predined set of possible values
+//we  create the enum with enum keyword 
+//it is useful when a value should only represent one of a known set of option
+
+//why do we need enum
+//  direction  -- up, down ,left , right
+// let direction = "up"
+// let direction = "hello"
+// let direction = "aplle"
+
+// enum Direction{
+//        up,
+//        down,
+//        left,
+//        right
+// }
+// enum trafficLight{
+//         red,
+//         yellow,
+//         green
+// }
+//syntax : enum EnumName{
+  //         valie1,
+  //         value2.......
+ //            }
+
+//accessing enum values
+//   enum Direction{
+//        up ,  
+//        down,
+//        left = 6,
+//        right
+// }
+// console.log(Direction.up);
+// console.log(Direction.down);
+// console.log(Direction.left);
+// console.log(Direction.right);
+
+// enum ROLES {
+//    user,
+//    admin,
+//    publisher,
+// }
+// let Usermanagement = ()=>{
+//         if(ROLES.user === 0){
+//             return 'user dashboard'
+//         }
+//         else{
+//             return 'its not the user dashboard'
+//         }
+// }
+// let result = Usermanagement()
+// console.log(result);
+
+//string enum
+// enum ROLES {
+//    user ,
+//    admin= "Admin" ,
+//    publisher = 'Publisher',
+// }
+
+// let Usermanagement = ()=>{
+//         if(ROLES.admin === "Admin"){
+//             return 'admin dashboard'
+//         }
+//         else{
+//             return 'its not the admin dashboard'
+//         }
+// }
+// let result = Usermanagement()
+// console.log(result);
+
+//const enum
+//  const enum color {
+//          red,
+//          green,
+//          yellow
+// }
+// console.log(color.red);
+
+//mixed enum
+// enum weekend{
+//    friday = "Friday",
+//    saturday = 100,
+//    sunday   = saturday* 100,
+// }
+// console.log(weekend.friday);
+// console.log(weekend.saturday);
+// console.log(weekend.sunday);
+// //reverse mapping // CAN be done only for the numbered enum
+// console.log(weekend[10000]);
+// console.log(weekend['saturday']);
+// console.log(weekend['Friday']);   // error
+
+//oops ---- object oriented programming based on classes and object rather than functions  and logic
+//easier debugging   // reuse the code // effective problem solving
+
+//core principles of oops
+// encapsulation // abstraction // inheritence // polymorphism
+
+//class
+//create students
+// let studnet1 = {
+//    name : 'rahul',
+//    age : 20
+// }
+// let studnet2 = {
+//    name : 'rahul1',
+//    age : 21
+// }
+//class  - a class gives the blueprint/template  to create an object
+// class Student {
+//   name : string = "John";
+//   age :number = 23
+// }
+// let s1 = new Student()
+// console.log(s1);
+// let  s2 = new Student()
+// console.log(s2);
+
+//methods  -- methods perform actions / behavior
+// a method is a function declared inside the class
+
+// class Student {
+//     name : string = ""
+//     study() {
+//          console.log("student is studying");
+         
+//     }
+// }
+// let s1 = new Student()
+// console.log(s1);
+// s1.study()
+
+// class Calculator {
+//      add(a:number , b:number):number {
+//          return a + b
+//      }
+// }
+// let c1 = new Calculator()
+// console.log(c1);
+// console.log(c1.add(20,30));
+
+//fields -- what the object has
+// methods -- what the object does
+
+//constructor 
+// class Student {
+//     name : string = "";
+//     age : number= 0;
+// }
+// let s1 = new Student()
+// s1.name = 'john';
+// s1.age = 20
+
+//constructor is used to initialize the values when an object is created
+//what - it is a special method that runs automatically when an object is created
+
+// class Student {
+//      name : string;
+//      age : number;
+//      constructor(name:string , age : number){
+//          this.name = name
+//          this.age = age
+//       }
+// }
+// let s1 = new Student("Rahul" , 22)
+// console.log(s1);
+
+// let s2 = new Student('JOhn' , 23)
+// console.log(s2);
+
+//access modifiers -- tells where we are allowed to access a class member(properties and methods)
+//1)public(default)
+//2)private 
+//3)protected
+ 
+//1) public-- means we can access (propeties and methods) any where
+// class Student {
+//   public   name : string = "Mark"
+//   public   age : number = 23
+// }
+// let s1 = new Student()
+// console.log(s1);
+
+// console.log(s1.name);
+
+// class student1 {
+//   public name : string= " John"
+//    public display() {
+//      console.log(this.name);
+     
+//    }
+// }
+// let s2 = new student1()
+// console.log(s2);
+// s2.display()
+
+//2) private -- we can access only inside the particular class
+//3) protected -- it can be accessed inside the class and inside the sub class
+//  but it cannot be accessed ouside the class
+// class Student {
+//  protected   marks : number = 90;
+//    display(){
+//           console.log(this.marks);
+          
+//      }
+// }
+// let s1 = new Student()
+// s1.display()
+
+
+// class collegestudent extends Student{
+//        display() {
+//             console.log(this.marks);
+            
+//        }
+// }
+// let s2 = new collegestudent()
+// s2.display()
+
+
+//static members in ts
+// a class can have members that belong to each object  and members that belong to class itself
+// class Student {
+//       name : string = "";
+//       age : number = 0
+// }
+// let s1 = new Student()
+// let s2 = new Student()
+// console.log(s1.name);
+// console.log(s2.name);
+
+//what is static member ; a static member is a member that belongs to the calss itself rather than individual object
+// we create the staic member using the staic keyword
+
+// class Studnet {
+//   static collegeName : string 
+      
+// }
+// let s1 = new Studnet()
+// Studnet.collegeName = "canara"
+// console.log(Studnet.collegeName);
+// console.log(s1.collegeName);
+
+// class Calculator{
+//     static add ( a: number , b : number){
+//        return a+b;
+//     }
+// }
+// console.log(Calculator.add(10,30));
+
+//getters and setters
+//getters  --  get - read / recive some value
+
+// class Student {
+//      name : string = "John";
+// }
+// let s1 = new Student();
+// console.log(s1.name);
+
+//why do we need a getter if we can already read values normally
+// class Student{
+//   private  name : string = "John";
+//      get Student1():string{
+//       return this.name
+//      }
+  
+// }
+// let s1 = new Student()
+
+
+// class CollegeStudent extends Student{
+//        get Student2(){
+//               return this.Student1
+              
+//            }
+// }
+// let s2 = new CollegeStudent()
+// console.log(s2.Student1);
+
+//setter -- controlled change / modify
+// class student{
+//     name : string
+// = "john"}
+// let s1 = new student()
+// console.log(s1.name);
+// s1.name = "Mark"
+// console.log(s1.name);
+
+// class UserAccount {
+//     private  age : number = 0 ;
+
+//     get age1():number{
+//        return this.age
+//     }
+
+// set age1(value:number) {
+//      if(value < 0){
+//           console.log(`age cannot be negative`);
+       
+          
+//      }
+//      if(value > 120){
+//           console.log(`pleasee enter the valid age`);
+         
+          
+//      }
+//        this.age= value
+// }  
+// }
+// let user = new UserAccount();
+// user.age1 = 121
+// console.log(user);
+// console.log(user.age1);
+
+
+//Inheritence-- it is a mechanism in which one class derives the properties of another class
+//the class whose members are inherited is called as the base class(parent class)
+// and the class that inherits those members are called as child class (derived class)
+
+// class  sub_classnamE  extends super_classname{
+//        methods/fields
+//}
+
+// class Person{
+//    name :string;
+//    constructor(name : string){
+//       this.name = name
+//    }
+// }
+// let person = new Person("Neeraj")
+// console.log(person);
+
+// class Person{
+//       firstname : string;
+//       lastname : string;
+//       constructor(firstname:string , lastname:string){
+//          this.firstname = firstname;
+//          this.lastname = lastname
+//       }
+//       getFullNmae(){
+//           console.log(`${this.firstname} -- ${this.lastname}`);
+          
+//       }
+// }
+
+// class Employee extends Person{
+//      age : number;
+//      constructor(firstname:string , lastname:string , age:number){
+//               super(firstname,lastname);
+//               this.age = age;
+//      }
+//      getFullNmae(): void {
+//            console.log(`${this.firstname} -- ${this.lastname} and age is ${this.age}`);
+           
+//      }
+// }
+// let s1 = new Employee("Shashi" , " Kumar" , 45)
+// console.log(s1);
+
+
+//inheritence with method overriding
+// class RBI{
+//  rateofintrest: number = 7;
+//   roi(){
+//        return  this.rateofintrest
+//   }
+// }
+
+// class  SBI extends RBI{
+//      roi(){
+//          return this.rateofintrest + 3
+//      }
+// }
+
+// class  ICICI  extends RBI{
+//       roi(){
+//          return this.rateofintrest + 4
+//       }
+// }
+// let sbi = new SBI();
+// let icici = new ICICI()
+// console.log(sbi.roi());
+// console.log(icici.roi());
+
+//encapsulation --- keeping the data protected inside the class and controlling how outside code can access or modify the data
+
+// class Student {
+//     private marks : number = 0;
+
+//     get studentMarks():number{
+//          return this.marks
+//     }
+
+
+//     set studentMarks(value:number){
+//         if(value >=0 && value <=100){
+//             this.marks = value;
+
+//         }else {
+//            console.log('invalid marks');
+           
+//         }
+//     }
+// }
+// let s1 = new Student();
+// s1.studentMarks = 85;
+// console.log(s1.studentMarks);
+
+//polymorphism  ---  polymorphism means the same method name or operation can behave differently in different situations
+//makeSound()    ---    dog :makeSound()-- bark
+//                       cat: makesound() -- meow
+//1) compile time polymorphism   2) run time polymorphism
+//comiple -- we will be using the same method name but provide different parameter signatures for different situations(method overloading)
+
+// class Calculator{
+//       add(a:number, b:number):number;
+//       add(c:string , d:string):string; //overload signatures
+
+//       add(a:any , b:any) : any{
+//           return a+b;
+//       }
+// }
+// let c1 = new Calculator()
+// console.log(c1.add(20,40));
+// console.log(c1.add("hello" , "world"));
+
+//runtime -- achived through inhetitence plus method overriding
+//the  same method call produces diffrent behaviour depending on the actual object
+// the actual object determines which overridden implementation is executed when the program runs
+
+// class Animal{
+//      makesound(){
+//           console.log('Animal sound');
+          
+//      }
+// }
+// class Dog extends Animal{
+//       makesound(): void {
+//         console.log('bark');
+        
+//       }
+// }
+// class Cat extends Dog{
+//    makesound(): void {
+//       console.log('memowww');
+      
+//    }
+// }
+// let a = new Animal()
+// a.makesound()
+
+// let a1  = new Dog()
+// let a2 = new Cat()
+// a1.makesound()
+// a2.makesound()
+
+//-----------------------------------------------------------------------------------------------
+
+//modules : are the way to organize and to give structure to our  code into files
+//imports and exports
+//exports --  this will allow us to make functions,variables ,classes ,interfaces or types
+//  available to other files
+
+// export  let pi = 3.14
+
+// export interface Point{
+//        x:number;
+//        y:number;
+// }
+
+// export function add(a:number , b:number): number{
+//       return a+b
+// }
+
+// //deafult export : these are ideal when a module reprents a single primary entity
+
+// export default class Login{
+//       log(message:string):void{
+//            console.log(`Login success`);
+//            console.log(message);
+           
+           
+//       };
+      
+// }
+
+
+//module resolution --  it is a process ts uses to determine what file an import statement refers to
+
+//namespaces -- it is a feature designed to group related code
+
+// export namespace math{
+//       export  function calculateArea(width:number ,height:number):number{
+//            return width * height;
+//       }
+
+//       export function calculatePerimeter(width:number ,height:number ):number{
+//          return 2*(width + height)
+//       }
+// }
+
+// let area = math.calculateArea(5,10)
+// let perimeter = math.calculatePerimeter(5, 10)
+// console.log(area);
+// console.log(perimeter);
+
+//-----------------------------------------------------------------------------------------
+//abstraction --  it shows only the necessary information and it hides all the unnecessary implemnetation
+// what - show
+//how -- hiden
+
+//why abstraction
+//how do we achive it -- Abstract class
+//abstract class is a  class that is designed to act as a base class for other classes 
+//syntax : abstract class ClassName{}
+//abstract method-- it has no implemenation in the abstract class
+//                   it will only defines what the method should look like
+//                    must be implemented by the child class
+
+//abstract class -- it can contain  abstract methods
+                        //normal methods // properties // constructors
+// abstract class Payment{
+//       amount : number =0
+//       abstract pay():void
+//       showMessage():void{
+//         console.log('payment processing');
+        
+//       }
+// }
+
+// class UPI extends  Payment{
+//         pay():void{
+//           console.log('payment done using upi');
+          
+//         }
+// }
+
+// class CreditCard  extends Payment{
+//         pay():void{
+//            console.log('payment done using credit card');
+//            console.log(`paid ${this.amount} using card`);
+           
+           
+//         }
+// }
+// let upi = new UPI()
+// upi.pay()
+// upi.showMessage()
+
+// let card = new CreditCard()
+
+// card.amount = 500
+// card.pay()
+
+
+// let p = new Payment()
+// normal class                                    //abstract class
+ // can create objects directly                    // cannot create objects
+ //can contain normal methods                      //can contain normal methods
+ //cannot contain abstract methods                // can contain abstract methods
+ // can be used directly                           //  are used as base class
+ //it provides the implementation                  // leaves the implementation for the child classes
+
+
+ //composition 
+ //car  -- engine , wheels ,music system , gps
+//car itself is an engine? -- no
+// car has an engine 
+
+//composition means creating a class by using objects of another classes inside it
+// has-a relationship
+
+//car -- engine
+// car is-a engine//no
+//car has-a engine
+
+//is-a // has-a
+//inheritence
+// class dog extends Animal{
+          //dog is-a animal
+// }
+
+//why dow we need composition
+//computer -- cpu , ram , storage 
+
+// class Engine {
+//      start():void {
+//       console.log('engine started');
+      
+//      }
+// }
+
+// class car {
+//          engine : Engine
+
+//          constructor(){
+//            this.engine = new Engine()
+//          }
+//          startCar():void{
+//              this.engine.start()
+//              console.log('car started');
+             
+//          }
+// }
+// let c = new car()
+// c.startCar()
+
+//type assertion
+// it is a way of telling ts that i know  the type of this better than you know treat this value as this type
+// let a:unknown = 12
+// let message = a as string
+// console.log(message.length);
+
+//syntax  :value as Type
+//valur -- orignal valuew
+//as -- tell ts the we are making  a type assertion
+//Type -- type we want ts to treat the value as
+
+//type assertion doesnot change change the value
+//type assertion only tells ts how to treat a value .it does not convert the actual value
+// let  a :unknown = "100";
+// let res = a as number
+// console.log(res);
+//  res.toFixed(3)
+// console.log(typeof res);
+
+// let user:unknown = {
+//     username : "jalaja",
+//     age:23,
+//     course:"ts"
+
+// }
+
+// type User ={
+//   username:string;
+//   age:number
+// }
+// let res = user as User
+// console.log(res.username);
+// console.log(res.age);
+// console.log(res.course);
+
+// let a :unknown = 100;
+// let res = a as string
+// console.log(res);
+
+// let value :string | number = "hello"
+// let mes = value as string;
+// console.log(mes.length);
+
+//generics --
+// function getvalue(value:number):number{
+//   return value;
+// }
+
+// function getString(value:string):string{
+//    return value;
+// }
+
+// function getboolean(value:boolean):boolean
+// {
+//   return value;
+// }
+
+//genrics allows us to write one resuable function that can work with different types 
+// while still remebring the actual type
+// function getvalue<T>(value:T):T{
+//   return value;
+// }
+// let  res1 = getvalue<number>(100)
+// console.log(res1);
+
+// let res2 = getvalue<string>("ts")
+// console.log(res2);
+
+// let res3 = getvalue<boolean>(true)
+// console.log(res3);
+// let  res1 = getvalue(100)
+// console.log(res1);
+
+// let res2 = getvalue("ts")
+// console.log(res2);
+
+// let res3 = getvalue(true)
+// console.log(res3);
+
+
+// function getFirst<T>(items:T[]):T{
+//   return items[3]
+// }
+
+// let res1 = getFirst([10,20,30,80])
+// console.log(res1);
+
+// let res2 = getFirst(['a','b','c','d'])
+// console.log(res2);
+
+//generic classes
+// class Box<T>{
+//     value:T;
+//     constructor(value:T){
+//         this.value = value;
+//     }
+//     getValue():T{
+//       return this.value
+//     }
+// }
+// let number = new Box<number>(100);
+
+// let string  = new Box<string>("hello")
+// console.log(number);
+// let a =number.getValue()
+// console.log(a);
+
+// console.log(string);
+// let b= string.getValue()
+// console.log(b);
+
+//generic interfaces
+// interface Box<T>{
+//      value : T;
+// }
+
+// let strBox:Box<string>={
+//     value:"hello",
+// }
+
+// let numBox:Box<number>={
+//     value : 100
+// }
+
+//generic constraints
+
+// function printLength<T extends {toUpperCase():string}>(value:T){
+//   console.log(value.toUpperCase());
+  // }
+// printLength("hello")
+
+// function printnum<T extends number>(value:T){
+//   console.log(value.toFixed(5)); 
+// }
+// printnum(100)
+
+
+
+
+
+
+
+
+
+
+
+
+
+//multiple generics
+// function pair<T,U>(first:T,second:U):[T,U]{
+//     return [first , second]
+// }
+// let res1 = pair("age" , 29)
+// console.log(res1);
+// let res2 = pair(100 , true)
+// console.log(res2);
+
+//advanced types
+//literal types -- this allows a variable to contain only a specific value or a specific set of values
+// let age : number = 29;    //10 , 20,35,25,70,80
+
+// let role: "admin" | "user" |"manager"
+// role = "teacher"
+
+//string literal
+// let direction : 'left' | 'right';
+// direction = 'right'
+
+//number literal 
+// let marks : 10|20|30|40|50;
+// marks = 40
+// marks = 80
+
+//boolean type
+// let isActive : true;
+// isActive = false
+// isActive = true
+
+// function move(direction:"left" | "right"){
+//   console.log("movng" , direction);
+  
+// }
+// move('left')
+// move('right')
+
+
+//template literal -- ``
+//template  literal allows us to create new string types
+// 'hello', "hello"
+
+// type name = "Ravi" | "Kiran";
+// type Greeting = `Hello ${name}`
+
+// let message :Greeting = 'Hello Ravi'
+// console.log(message);
+
+
+// let name1 :string = "Mark"
+// let age : number = 22;
+// console.log(`Hello , my name is ${name1} and I am  ${age } yeras old`);
+
+//keyof -- it is used to get the property names of a type
+
+// type Student = {
+//     name : string;
+//     age: number;
+//     course : string
+// }
+
+// type studentKeys = keyof Student
+
+// let key:studentKeys
+// key=''
+
+//
+
+// function getProperty(key: keyof Student){
+//      console.log(key);
+     
+// }
+// getProperty('age')
+// getProperty('course')
+// getProperty('name')
+
+// type Employee ={
+//    id:number;
+//    name: string;
+//    salray:number
+// }
+
+// type EmployeeKey = keyof Employee;
+
+// let key:EmployeeKey ="course"
+// console.log(key);
+
+//indexed Access -- allows us to access the type of a particular property from another type
+
+// type Student={
+//    name:string;
+//    age:number;
+// }
+
+// type StudentName = Student["name"]
+// type StudentAge = Student["age"]
+
+// let s :StudentName = "john"
+// console.log(s);
+
+
+//typeof -- allows  us to take the type of an existing value
+
+// let student = {
+//    name : "Sneha",
+//    age: 23
+// }
+
+// type Student = typeof student
+
+// let s1:Student ={
+//       name:'sneha',
+//       age:22
+// }
+
+//utility types  ; these are the built-in ts types that helps us create new types 
+// by modifying , selecting ,removing or extracting information from existing types
+
+
+//Partil<T>
+
+// interface Studnet {
+//   name:string;
+//   age:number;
+//   course:string
+// }
+
+// let StudentUpdate:Partial<Studnet>= {
+//      course : "TS"
+// }
+
+
+//Required<T> -- when the type has optional properties , but at a 
+// particular point we nedd every property to be mandatory
+
+// interface Student{
+//    name?:string;
+//    age?:number;
+//    course?:string
+// }
+
+// let s1:Required<Student>={
+//   name:'John',
+//   age:23,
+//   course:"TS"
+
+// }
+   
+
+//Pick<T ,K> -- an existing type may contain many properties, but we may need only  FEW 
+// interface Student{
+//    name:string;
+//    age:number;
+//    course:string;
+//    salary:number
+// }
+
+// type StudentInfo = Pick<Student, "name" | "age">;
+// let s1:StudentInfo={
+//      name:"john",
+//      age:23,
+// }
+
+//Omit<T,K>  -- when we want almost all the properties except one or two
+// type S1 = Omit<Student,"salary">
+// let s:S1={
+//   name:"JOHN",
+//   age:22,
+//   course:"BE"
+// }
+
+//Record<K,T>
+// sometimes we want an object with defined key types and a defined value type
+
+// type StudentMarks = Record<number , number>
+
+// let marks:StudentMarks = {
+//    40:90,
+//    90:89,
+//    123:88
+// }
+// console.log(marks);
+
+// console.log(marks.123);
+
+
+// type Role="admin" | "user" | "manager"
+
+// type Role2 = Record<Role ,boolean>
+
+// let res :Role2={
+//     admin:true,
+//     user:false,
+//     manager:true
+   
+// }
+
+//Exclude<T,U> -- we may have a union type and want to remove one or more members
+
+// type Role="admin" | "user" | "manager"
+
+// type Userrole = Exclude<Role,"admin" | "manager">
+
+//Extract<T,U> --insted of removing types sometimes we  want tp keep only the matching members
+
+
+// type Role="admin" | "user" | "manager"
+ 
+// type AdminRoles = Extract<Role, "admin" | "manager">
+
+//NonNullable<T> : a type may contain null or undefined . Somtimes we need a version without those two possiblities
+
+// type Value = string | null | undefined
+
+// type val = NonNullable<Value>
+
+//async programming
+ // async programming allows program to start a time-consuming operation without
+ //  unnecesarily stoping other work while waiting for that operation to finish
+
+ //sync -- one task is completed first and then the next task starts
+//  console.log("task1");
+//  console.log("task 2");
+ 
+//  console.log('task1');
+//  someSloweoperation();
+//  console.log("task2");
+ 
+//  console.log('start');
+// setTimeout(()=>{
+//   console.log('task completed');
+  
+//  },3000)
+//  console.log('end');
+ 
+//to handle async programming will be using promises
+
+// function getName():Promise<string>{
+//   return Promise.resolve("john")
+// }
+// let r = getName()
+// console.log(r);
+
+//a promise reprents the future result of an async operation
+  //three states --- Pending , Fulfilled ,Rejected
+                                                               //pending
+  //pending -- the operation is still running  -- request sent ----------> waiting for response
+  //Fulfilled--- the operation completed successfully. -- request sent --> response got -->success
+  //rejected --- the operation failed --- request sent -- something went wrong -- failure
+
+  // const p = new Promise<string>((resolve,reject)=>{
+  //    setTimeout(()=>{
+  //     resolve("data received")
+  //    },3000)
+  // })
+
+//   const p = new Promise<string>((resolve,reject)=>{
+//              let success = false;
+//              if(success){
+//                resolve("data received")
+//              }
+//              else{
+//                 reject("something went wrong")
+//              }
+//   })
+// p.then((data)=>{
+//   console.log(data);
+  
+// })
+// .catch((error)=>{
+//   console.log(error);
+  
+// })
+  
+//async and await
+function getUser():Promise<string>{
+    return new Promise((resolve)=>{
+       setTimeout(()=>{
+        resolve("john")
+       },3000)
+    })
+}
+
+function getOrders(user:string):Promise<string>{
+     return new Promise((resolve,reject)=>{
+      setTimeout(()=>{
+            reject("smtg went wrong")
+      },3000)
+     })
+}
+
+getUser()
+.then((user)=>{
+   return getOrders(user);
+})
+.then((orders)=>{
+  console.log(orders);
+  
+})
+.catch((error)=>{
+  console.log(error);
+  
+})
+
+
+
+
+
+
+
+// function getUser():Promise<string>{
+//   return new Promise((resolve)=>{
+//     setTimeout(()=>{
+//         resolve('john')
+//     })
+//   })
+// }
+
+// function getOrders(user:string):Promise<string>{
+//      return new Promise((resolve)=>{
+//       setTimeout(()=>{
+//             resolve(user + "has 2 orders")
+//       },3000)
+//      })
+// }
+// async function displayOrders() {
+//   try{
+//     const user = await getUser()
+//     console.log(user);
+
+//     const orders = await getOrders(user)
+//     console.log(orders);
+//     }
+//     catch(error){
+//       console.log();
+      
+//     }
+  
+// }
+

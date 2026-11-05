@@ -1,0 +1,337 @@
+//methods  -- methods perform actions / behavior
+// a method is a function declared inside the class
+
+// class Student {
+//     name : string = ""
+//     study() {
+//          console.log("student is studying");
+         
+//     }
+// }
+// let s1 = new Student()
+// console.log(s1);
+// s1.study()
+
+// class Calculator {
+//      add(a:number , b:number):number {
+//          return a + b
+//      }
+// }
+// let c1 = new Calculator()
+// console.log(c1);
+// console.log(c1.add(20,30));
+
+//fields -- what the object has
+// methods -- what the object does
+
+//constructor 
+// class Student {
+//     name : string = "";
+//     age : number= 0;
+// }
+// let s1 = new Student()
+// s1.name = 'john';
+// s1.age = 20
+
+//constructor is used to initialize the values when an object is created
+//what - it is a special method that runs automatically when an object is created
+
+// class Student {
+//      name : string;
+//      age : number;
+//      constructor(name:string , age : number){
+//          this.name = name
+//          this.age = age
+//       }
+// }
+// let s1 = new Student("Rahul" , 22)
+// console.log(s1);
+
+// let s2 = new Student('JOhn' , 23)
+// console.log(s2);
+
+//access modifiers -- tells where we are allowed to access a class member(properties and methods)
+//1)public(default)
+//2)private 
+//3)protected
+ 
+//1) public-- means we can access (propeties and methods) any where
+// class Student {
+//   public   name : string = "Mark"
+//   public   age : number = 23
+// }
+// let s1 = new Student()
+// console.log(s1);
+
+// console.log(s1.name);
+
+// class student1 {
+//   public name : string= " John"
+//    public display() {
+//      console.log(this.name);
+     
+//    }
+// }
+// let s2 = new student1()
+// console.log(s2);
+// s2.display()
+
+//2) private -- we can access only inside the particular class
+//3) protected -- it can be accessed inside the class and inside the sub class
+//  but it cannot be accessed ouside the class
+// class Student {
+//  protected   marks : number = 90;
+//    display(){
+//           console.log(this.marks);
+          
+//      }
+// }
+// let s1 = new Student()
+// s1.display()
+
+
+// class collegestudent extends Student{
+//        display() {
+//             console.log(this.marks);
+            
+//        }
+// }
+// let s2 = new collegestudent()
+// s2.display()
+
+
+//static members in ts
+// a class can have members that belong to each object  and members that belong to class itself
+// class Student {
+//       name : string = "";
+//       age : number = 0
+// }
+// let s1 = new Student()
+// let s2 = new Student()
+// console.log(s1.name);
+// console.log(s2.name);
+
+//what is static member ; a static member is a member that belongs to the calss itself rather than individual object
+// we create the staic member using the staic keyword
+
+// class Studnet {
+//   static collegeName : string 
+      
+// }
+// let s1 = new Studnet()
+// Studnet.collegeName = "canara"
+// console.log(Studnet.collegeName);
+// console.log(s1.collegeName);
+
+// class Calculator{
+//     static add ( a: number , b : number){
+//        return a+b;
+//     }
+// }
+// console.log(Calculator.add(10,30));
+
+//getters and setters
+//getters  --  get - read / recive some value
+
+// class Student {
+//      name : string = "John";
+// }
+// let s1 = new Student();
+// console.log(s1.name);
+
+//why do we need a getter if we can already read values normally
+// class Student{
+//   private  name : string = "John";
+//      get Student1():string{
+//       return this.name
+//      }
+  
+// }
+// let s1 = new Student()
+
+
+// class CollegeStudent extends Student{
+//        get Student2(){
+//               return this.Student1
+              
+//            }
+// }
+// let s2 = new CollegeStudent()
+// console.log(s2.Student1);
+
+//setter -- controlled change / modify
+// class student{
+//     name : string
+// = "john"}
+// let s1 = new student()
+// console.log(s1.name);
+// s1.name = "Mark"
+// console.log(s1.name);
+
+// class UserAccount {
+//     private  age : number = 0 ;
+
+//     get age1():number{
+//        return this.age
+//     }
+
+// set age1(value:number) {
+//      if(value < 0){
+//           console.log(`age cannot be negative`);
+       
+          
+//      }
+//      if(value > 120){
+//           console.log(`pleasee enter the valid age`);
+         
+          
+//      }
+//        this.age= value
+// }  
+// }
+// let user = new UserAccount();
+// user.age1 = 121
+// console.log(user);
+// console.log(user.age1);
+
+
+//Inheritence-- it is a mechanism in which one class derives the properties of another class
+//the class whose members are inherited is called as the base class(parent class)
+// and the class that inherits those members are called as child class (derived class)
+
+// class  sub_classnamE  extends super_classname{
+//        methods/fields
+//}
+
+// class Person{
+//    name :string;
+//    constructor(name : string){
+//       this.name = name
+//    }
+// }
+// let person = new Person("Neeraj")
+// console.log(person);
+
+// class Person{
+//       firstname : string;
+//       lastname : string;
+//       constructor(firstname:string , lastname:string){
+//          this.firstname = firstname;
+//          this.lastname = lastname
+//       }
+//       getFullNmae(){
+//           console.log(`${this.firstname} -- ${this.lastname}`);
+          
+//       }
+// }
+
+// class Employee extends Person{
+//      age : number;
+//      constructor(firstname:string , lastname:string , age:number){
+//               super(firstname,lastname);
+//               this.age = age;
+//      }
+//      getFullNmae(): void {
+//            console.log(`${this.firstname} -- ${this.lastname} and age is ${this.age}`);
+           
+//      }
+// }
+// let s1 = new Employee("Shashi" , " Kumar" , 45)
+// console.log(s1);
+
+
+//inheritence with method overriding
+// class RBI{
+//  rateofintrest: number = 7;
+//   roi(){
+//        return  this.rateofintrest
+//   }
+// }
+
+// class  SBI extends RBI{
+//      roi(){
+//          return this.rateofintrest + 3
+//      }
+// }
+
+// class  ICICI  extends RBI{
+//       roi(){
+//          return this.rateofintrest + 4
+//       }
+// }
+// let sbi = new SBI();
+// let icici = new ICICI()
+// console.log(sbi.roi());
+// console.log(icici.roi());
+
+//encapsulation --- keeping the data protected inside the class and controlling how outside code can access or modify the data
+
+// class Student {
+//     private marks : number = 0;
+
+//     get studentMarks():number{
+//          return this.marks
+//     }
+
+
+//     set studentMarks(value:number){
+//         if(value >=0 && value <=100){
+//             this.marks = value;
+
+//         }else {
+//            console.log('invalid marks');
+           
+//         }
+//     }
+// }
+// let s1 = new Student();
+// s1.studentMarks = 85;
+// console.log(s1.studentMarks);
+
+//polymorphism  ---  polymorphism means the same method name or operation can behave differently in different situations
+//makeSound()    ---    dog :makeSound()-- bark
+//                       cat: makesound() -- meow
+//1) compile time polymorphism   2) run time polymorphism
+//comiple -- we will be using the same method name but provide different parameter signatures for different situations(method overloading)
+
+// class Calculator{
+//       add(a:number, b:number):number;
+//       add(c:string , d:string):string; //overload signatures
+
+//       add(a:any , b:any) : any{
+//           return a+b;
+//       }
+// }
+// let c1 = new Calculator()
+// console.log(c1.add(20,40));
+// console.log(c1.add("hello" , "world"));
+
+//runtime -- achived through inhetitence plus method overriding
+//the  same method call produces diffrent behaviour depending on the actual object
+// the actual object determines which overridden implementation is executed when the program runs
+
+class Animal{
+     makesound(){
+          console.log('Animal sound');
+          
+     }
+}
+class Dog extends Animal{
+      makesound(): void {
+        console.log('bark');
+        
+      }
+}
+class Cat extends Dog{
+   makesound(): void {
+      console.log('memowww');
+      
+   }
+}
+let a = new Animal()
+a.makesound()
+
+let a1  = new Dog()
+let a2 = new Cat()
+a1.makesound()
+a2.makesound()
